@@ -7,19 +7,31 @@ package ui;
 import domain.DomainController;
 import domain.Event;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.table.AbstractTableModel;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
+import sun.java2d.loops.ProcessPath.ProcessHandler;
 /**
  *
  * @author Gebruiker
@@ -476,6 +488,24 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
 
     private void jButtonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPlayActionPerformed
         //Controle
+        if (Integer.parseInt(this.jTextFieldLoop.getText()) > 5)
+        {
+            JLabel label = new JLabel("<html>Looping more than 5 times is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+            label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                    } catch (URISyntaxException | IOException ex) {
+                        // ...
+                    }
+                }
+            });
+
+            JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         ArrayList<Integer> insideLoops = new ArrayList<>();
         for (Event e : DomainController.er.getEventList())
         {
@@ -691,11 +721,26 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
         else
         {
             int[] i = jTableEvents.getSelectedRows();
-            int choice;
+            int choice = 1;
             if (i.length == 1)
                 choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this event?", "Delete", JOptionPane.YES_NO_OPTION);
             else
-                choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete these events?", "Delete", JOptionPane.YES_NO_OPTION);
+            {
+                JLabel label = new JLabel("<html>Deleting multiple actions at once is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+                label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                label.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        try {
+                            Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                        } catch (URISyntaxException | IOException ex) {
+                            // ...
+                        }
+                    }
+                });
+
+                JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
+            }
             if (choice == 0)
             {
                 for (int j = i.length-1; j >= 0; j--)
@@ -769,11 +814,6 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
                     isf.setLocationRelativeTo(null);
                     isf.setVisible(true);
                     break;
-                case WAITFORCOLOR:
-                    AddColorFrame acof = new AddColorFrame(i[0],e.getMinPause(),e.getMaxPause(),e.getMouseX(),e.getMouseY(),e.getColor());
-                    acof.setLocationRelativeTo(null);
-                    acof.setVisible(true);
-                    break;
                 case LOOP:
                     int number ;
                     boolean gevonden = false;
@@ -821,12 +861,37 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
     }//GEN-LAST:event_jButtonAddOneKeyActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
-        DomainController.save();
+        JLabel label = new JLabel("<html>This action is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                } catch (URISyntaxException | IOException ex) {
+                    // ...
+                }
+            }
+        });
+        
+        JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        DomainController.open();
-        jTextFieldLoop.setText(String.format("%d",DomainController.er.getNumberOfLoops()));
+        JLabel label = new JLabel("<html>This action is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                } catch (URISyntaxException | IOException ex) {
+                    // ...
+                }
+            }
+        });
+        
+        JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void jButtonUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpActionPerformed
@@ -917,43 +982,37 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
     }//GEN-LAST:event_jTextFieldLoopKeyReleased
 
     private void jButtonAddColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddColorActionPerformed
-        AddColorFrame acof = new AddColorFrame();
-        acof.setLocationRelativeTo(null);
-        acof.setVisible(true);
+        JLabel label = new JLabel("<html>This action is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                } catch (URISyntaxException | IOException ex) {
+                    // ...
+                }
+            }
+        });
+        
+        JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButtonAddColorActionPerformed
 
     private void jButtonAddLoopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddLoopActionPerformed
-        boolean gevonden = false;
-        int loopEvent = 0;
-        while (!gevonden)
-        {
-            loopEvent++;
-            gevonden = true;
-            for (Event e : DomainController.er.getEventList())
-            {
-                if (e.getNumberOfLoopEvent() == loopEvent)
-                {
-                    gevonden = false;
-                    break;
+        JLabel label = new JLabel("<html>This action is only available with the full version of ClickerBot.<br/>If you want to purchase ClickerBot please go to <a href=#>clickerbot.eu</a>.</html>");
+        label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                } catch (URISyntaxException | IOException ex) {
+                    // ...
                 }
             }
-        }
-        String s = JOptionPane.showInputDialog(null, "How many times would you like to loop?");
-        int numberOfLoops = 0;
-        try
-        {
-            numberOfLoops = Integer.parseInt(s);
-            if (numberOfLoops < 1)
-                throw new Exception();
-        }
-        catch(Exception exc)
-        {
-            JOptionPane.showMessageDialog(null, "You didn't enter a valid number of loops.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        DomainController.addEvent(Event.Type.LOOP, 0, 0, 0, 0, false, false, false, "", "", Color.white, numberOfLoops, loopEvent);
-        DomainController.addEvent(Event.Type.LOOPEND, 0, 0, 0, 0, false, false, false, "", "", Color.white, 0, loopEvent);
-        tm.fireTableDataChanged();
+        });
+        
+        JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButtonAddLoopActionPerformed
 
     private void jMenuItemNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNewActionPerformed
