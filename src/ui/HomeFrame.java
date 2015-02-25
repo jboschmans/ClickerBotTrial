@@ -496,7 +496,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                        Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                     } catch (URISyntaxException | IOException ex) {
                         // ...
                     }
@@ -732,7 +732,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         try {
-                            Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                            Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                         } catch (URISyntaxException | IOException ex) {
                             // ...
                         }
@@ -867,7 +867,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                 } catch (URISyntaxException | IOException ex) {
                     // ...
                 }
@@ -884,7 +884,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                 } catch (URISyntaxException | IOException ex) {
                     // ...
                 }
@@ -988,7 +988,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                 } catch (URISyntaxException | IOException ex) {
                     // ...
                 }
@@ -1005,7 +1005,7 @@ public class HomeFrame extends javax.swing.JFrame implements NativeKeyListener {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html/"));
+                    Desktop.getDesktop().browse(new URI("http://clickerbot.eu/html/download.html"));
                 } catch (URISyntaxException | IOException ex) {
                     // ...
                 }
